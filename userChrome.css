@@ -62,6 +62,9 @@ dropmarker{
 #zotero-tb-search{
 	filter: var(--menu-filter);
 }
+#zotero-lookup-panel{
+	filter: invert(85%) hue-rotate(180deg) brightness(120%);
+}
 /* todo: */
 /* Fix this -- selector doesn't work... */
 tooltip{
