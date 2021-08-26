@@ -1,0 +1,177 @@
+:root {
+	--menu-bg: #2A2A2A;
+	--menu-text: #FFFFFF;
+	--menu-text-inverted: #000000;
+	--menu-text-disabled-inverted: #BBBBBB;
+	--menu-filter: invert(90%) hue-rotate(180deg) brightness(120%);
+	--menu-unfilter-image: invert(90%) hue-rotate(180deg) saturate(120%);
+	
+	--collections-bg: #1F2023;
+	
+	--items-bg: #27292D;
+	
+	--bg-overflow: #010101;
+	--bg-base: #1F2023;
+	--bg-surface: #27292D;
+	--bg-overlay-dark: #2D2F34;
+	--bg-overlay-light: #383B40;
+}
+
+
+/* 
+  Navigation bar (File, Edit menu...) 
+*/
+#navigator-toolbox{
+	background: var(--menu-bg);
+	color: var(--menu-text);
+}
+/* inverting filter hack to style elements I couldn't access otherwise */
+menupopup {
+	filter: var(--menu-filter);
+}
+menupopup image {
+	filter: var(--menu-unfilter-image);
+}
+menubar > menu {
+	color: var(--menu-text);
+}
+menupopup menuitem:not([disabled=true]) {
+	color: var(--menu-text-inverted)
+}
+menupopup menuitem[disabled=true] {
+	color: var(--menu-text-disabled-inverted)
+}
+/* Set the selection colour to gray */
+/* menupopup menuitem[_moz-menuactive], menupopup menu[_moz-menuactive] {
+	filter: saturate(0);
+} */
+
+
+/*
+  Zotero toolbar (New collection, new library, new item buttons)
+*/
+#zotero-toolbar{
+	background: var(--menu-bg);
+	color: var(--menu-text);
+	border: 0px !important; /* overwritten if not important */
+}
+dropmarker{
+	filter: invert(100%) brightness(120%);
+}
+/* Invert the "All Field & Tags" search bar */
+#zotero-tb-search{
+	filter: var(--menu-filter);
+}
+/* todo: */
+/* Fix this -- selector doesn't work... */
+tooltip{
+	filter: invert(100%);
+}
+
+
+/*
+  Zotero Collections Pane (My Library, ...)
+*/
+/* #zotero-collections-pane{
+	filter: var(--menu-filter);
+}
+#zotero-collections-pane image {
+	filter: var(--menu-unfilter-image);
+} */
+#zotero-collections-pane treechildren{
+	background: var(--collections-bg);
+  color: var(--menu-text); 
+}
+.tag-selector-list-container {
+	background: var(--collections-bg) !important;
+	color: var(--menu-text); 
+}
+/* Can't easily select the scrollbar, only as a child of .tag-selector-list */
+.tag-selector-list{
+	filter: invert(100%);
+}
+.tag-selector-list > div{
+	filter: invert(100%);
+}
+.tag-selector-filter-container{
+	background: var(--collections-bg);
+	color: var(--menu-text); 
+}
+.tag-selector-filter-container > .tag-selector-actions > .icon-downchevron {
+	filter: invert(100%) brightness(120%);
+}
+.tag-selector-filter-container > .search {
+	filter: var(--menu-filter);
+}
+/* todo: */
+/* hover for collection tree items */
+/* hover for each tag... */
+
+
+/*
+  Zotero Items Pane (main section in the middle)
+*/
+#zotero-items-pane treechildren{
+	background: var(--items-bg);
+  color: var(--menu-text); 
+}
+#zotero-items-columns-header > treecol {
+	filter: var(--menu-filter);
+}
+#zotero-items-columns-header > treecol > image {
+	filter: var(--menu-unfilter-image);
+}
+#zotero-items-columns-header > treecolpicker{
+	filter: var(--menu-filter);
+}
+/* #zotero-items-columns-header splitter{
+	display: none;
+} */
+scrollbar {
+	filter: invert(100%);
+}
+scrollbar thumb {
+	filter: brightness(80%); 
+}
+
+
+/*
+  Zotero Item Pane (details about the selected item)
+*/
+#zotero-item-pane, #zotero-item-pane-content {
+	background: var(--items-bg);
+  color: var(--menu-text); 
+}
+/* #zotero-editpane-item-box{ */
+#zotero-view-item {
+	background: var(--collections-bg) !important;
+	color: white !important;
+	border: 0px !important;
+}
+#item-type-menu {
+	color: white !important;
+}
+.creator-type-label > image{
+	filter: invert(100%) brightness(120%);
+}
+#zotero-editpane-tabs tab{
+	-moz-appearance: none !important;
+	background: var(--items-bg) !important;
+	color: white !important;
+	border: 4px white !important;
+}
+#zotero-editpane-tabs tab[selected="true"]{
+	color: white !important;
+	border-bottom: 1px white !important;
+	background: var(--collections-bg) !important;
+}
+#zotero-editpane-tabs tab:hover{
+	background: #555 !important;
+}
+/* fix border */
+#zotero-view-item textbox{
+	-moz-appearance: none !important;
+	background: var(--collections-bg) !important;
+	color: white !important;
+	border: 4px !important;
+}
