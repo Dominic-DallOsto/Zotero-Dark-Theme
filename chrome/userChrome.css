@@ -18,6 +18,7 @@
 	
 	--hover-blue: #2c618e;
 	--selected-blue: #0078d7;
+	--hover-border-blue: #7bc3ff;
 }
 
 
@@ -132,9 +133,16 @@ tooltip{
 	background: var(--items-bg);
   color: var(--menu-text); 
 }
-/* #zotero-items-pane treechildren:hover{
-  color: black; 
-} */
+#zotero-items-pane treechildren::-moz-tree-row(hover){
+	background: var(--hover-blue) !important;
+	border: var(--hover-border-blue) 1px solid !important;
+}
+#zotero-items-pane treechildren::-moz-tree-cell(selected){
+	background: var(--selected-blue) !important;
+}
+#zotero-items-pane treechildren::-moz-tree-cell-text(selected){
+	color: white !important;
+}
 #zotero-items-columns-header > treecol {
 	filter: var(--menu-filter);
 }
