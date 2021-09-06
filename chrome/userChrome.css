@@ -78,11 +78,16 @@ tooltip{
 /*
   Zotero Collections Pane (My Library, ...)
 */
+/* #zotero-collections-pane{
+	filter: var(--menu-filter);
+}
+#zotero-collections-pane image {
+	filter: var(--menu-unfilter-image);
+} */
 #zotero-collections-pane treechildren{
 	background: var(--collections-bg);
-	color: var(--menu-text);
+  color: var(--menu-text);
 }
-/* Need these special selectors because it's an XUL tree */
 #zotero-collections-pane treechildren::-moz-tree-row(hover){
 	background: var(--hover-blue) !important;
 }
@@ -113,10 +118,12 @@ tooltip{
 .tag-selector-filter-container > .search {
 	filter: var(--menu-filter);
 }
-/* todo: */
-/* hover for collection tree items */
-/* hover for each tag... */
-
+.tag-selector-item:hover{
+	background: var(--hover-blue) !important;
+}
+.tag-selector-item.selected{
+	background: var(--selected-blue) !important;
+}
 
 /*
   Zotero Items Pane (main section in the middle)
