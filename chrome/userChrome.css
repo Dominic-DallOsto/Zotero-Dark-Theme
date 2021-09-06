@@ -15,6 +15,9 @@
 	--bg-surface: #27292D;
 	--bg-overlay-dark: #2D2F34;
 	--bg-overlay-light: #383B40;
+	
+	--hover-blue: #2c618e;
+	--selected-blue: #0078d7;
 }
 
 
@@ -75,15 +78,19 @@ tooltip{
 /*
   Zotero Collections Pane (My Library, ...)
 */
-/* #zotero-collections-pane{
-	filter: var(--menu-filter);
-}
-#zotero-collections-pane image {
-	filter: var(--menu-unfilter-image);
-} */
 #zotero-collections-pane treechildren{
 	background: var(--collections-bg);
-  color: var(--menu-text); 
+	color: var(--menu-text);
+}
+/* Need these special selectors because it's an XUL tree */
+#zotero-collections-pane treechildren::-moz-tree-row(hover){
+	background: var(--hover-blue) !important;
+}
+#zotero-collections-pane treechildren::-moz-tree-cell(selected){
+	background: var(--selected-blue) !important;
+}
+#zotero-collections-pane treechildren::-moz-tree-cell-text(selected){
+	color: white !important;
 }
 .tag-selector-list-container {
 	background: var(--collections-bg) !important;
