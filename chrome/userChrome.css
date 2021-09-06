@@ -5,6 +5,7 @@
 	--menu-text-disabled-inverted: #BBBBBB;
 	--menu-filter: invert(90%) hue-rotate(180deg) brightness(120%);
 	--menu-unfilter-image: invert(90%) hue-rotate(180deg) saturate(120%);
+	--full-invert-filter: invert(100%) hue-rotate(180deg);
 	
 	--collections-bg: #1F2023;
 	
@@ -174,7 +175,7 @@ scrollbar thumb {
   color: var(--menu-text); 
 }
 #zotero-item-pane button{
-	filter: invert(100%) hue-rotate(180deg);
+	filter: var(--full-invert-filter);
 }
 #zotero-view-item {
 	background: var(--collections-bg) !important;
@@ -200,6 +201,13 @@ scrollbar thumb {
 }
 #zotero-editpane-tabs tab:hover{
 	background: #555 !important;
+}
+.tags-box-list .tag .editable .input{
+	filter: var(--full-invert-filter);
+}
+/* Invert the suggestions text back to white */
+.tags-box-list .tag .editable ul[role=listbox] li[role=option]{
+	filter: var(--full-invert-filter);
 }
 /* fix border */
 #zotero-view-item textbox{
