@@ -118,6 +118,9 @@ tooltip{
 	background: var(--items-bg);
   color: var(--menu-text); 
 }
+/* #zotero-items-pane treechildren:hover{
+  color: black; 
+} */
 #zotero-items-columns-header > treecol {
 	filter: var(--menu-filter);
 }
