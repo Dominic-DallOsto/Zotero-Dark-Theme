@@ -119,6 +119,9 @@ tooltip{
 .tag-selector-filter-container > .search {
 	filter: var(--menu-filter);
 }
+/* todo: */
+/* hover for collection tree items */
+/* hover for each tag... */
 .tag-selector-item:hover{
 	background: var(--hover-blue) !important;
 }
@@ -170,7 +173,9 @@ scrollbar thumb {
 	background: var(--items-bg);
   color: var(--menu-text); 
 }
-/* #zotero-editpane-item-box{ */
+#zotero-item-pane button{
+	filter: invert(100%) hue-rotate(180deg);
+}
 #zotero-view-item {
 	background: var(--collections-bg) !important;
 	color: white !important;
