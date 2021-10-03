@@ -6,6 +6,7 @@
 	--menu-filter: invert(90%) hue-rotate(180deg) brightness(120%);
 	--menu-unfilter-image: invert(90%) hue-rotate(180deg) saturate(120%);
 	--full-invert-filter: invert(100%) hue-rotate(180deg);
+	--bg-textbox: #010101;
 	
 	--collections-bg: #1F2023;
 	
@@ -39,7 +40,7 @@ tab:not([selected=true]) {
 	background: var(--bg-base) !important;
 	color: var(--menu-text) !important;
 }
-button{
+button, menulist, textbox, textarea{
 	filter: invert(100%) hue-rotate(180deg);
 }
 scrollbar {
@@ -48,23 +49,7 @@ scrollbar {
 scrollbar thumb {
 	filter: brightness(80%); 
 }
-menulist{
-	filter: invert(100%) hue-rotate(180deg);
-}
 caption{
-	background: var(--menu-bg) !important;
-	color: var(--menu-text) !important;
-}
-textbox{
-	/* doesn't work in advanced search menu	 */
-	-moz-appearance: none !important;
-	background: var(--menu-bg) !important;
-	color: var(--menu-text) !important;
-/* 	filter: invert(100%) hue-rotate(180deg); */
-}
-textarea{
-	/* untested	 */
-	-moz-appearance: none;
 	background: var(--menu-bg) !important;
 	color: var(--menu-text) !important;
 }
