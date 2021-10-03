@@ -21,6 +21,8 @@
 	--hover-blue: #2c618e;
 	--selected-blue: #0078d7;
 	--hover-border-blue: #7bc3ff;
+
+	/* todo: preferences -> advanced -> files and folders, feeds */
 }
 
 /*
@@ -40,8 +42,11 @@ tab:not([selected=true]) {
 	background: var(--bg-base) !important;
 	color: var(--menu-text) !important;
 }
-button, menulist, textbox, textarea{
+button, menulist{
 	filter: invert(100%) hue-rotate(180deg);
+}
+textbox, textarea, filefield, input, checkbox image, radiogroup image {
+	filter: invert(88.3%) hue-rotate(180deg);
 }
 scrollbar {
 	filter: invert(100%);
@@ -53,9 +58,9 @@ caption{
 	background: var(--menu-bg) !important;
 	color: var(--menu-text) !important;
 }
-checkbox image{
+/* checkbox image{
 	filter: invert(100%) hue-rotate(180deg);
-}
+} */
 tree treechildren{
 	background: var(--items-bg);
 	color: var(--menu-text); 
@@ -259,9 +264,9 @@ zoteronoteeditor #noteField{
 .prefWindow-dlgbuttons{
 	background: var(--menu-bg) !important;
 }
-radiogroup{
+.paneSelector{
 	filter: var(--menu-filter);
 }
-radiogroup image{
+.paneSelector image{
 	filter: var(--menu-unfilter-image);
 }
