@@ -22,6 +22,84 @@
 	--hover-border-blue: #7bc3ff;
 }
 
+/*
+  General Styles
+*/
+window, page, dialog, wizard, prefpane {
+	background: var(--menu-bg) !important;
+	color: var(--menu-text) !important;
+}
+tabpanels, tab[selected=true]{
+	-moz-appearance: none !important;
+	background: var(--bg-overlay-dark) !important;
+	color: var(--menu-text) !important;
+}
+tab:not([selected=true]) {
+	-moz-appearance: none !important;
+	background: var(--bg-base) !important;
+	color: var(--menu-text) !important;
+}
+button{
+	filter: invert(100%) hue-rotate(180deg);
+}
+scrollbar {
+	filter: invert(100%);
+}
+scrollbar thumb {
+	filter: brightness(80%); 
+}
+menulist{
+	filter: invert(100%) hue-rotate(180deg);
+}
+caption{
+	background: var(--menu-bg) !important;
+	color: var(--menu-text) !important;
+}
+textbox{
+	/* doesn't work in advanced search menu	 */
+	-moz-appearance: none !important;
+	background: var(--menu-bg) !important;
+	color: var(--menu-text) !important;
+/* 	filter: invert(100%) hue-rotate(180deg); */
+}
+textarea{
+	/* untested	 */
+	-moz-appearance: none;
+	background: var(--menu-bg) !important;
+	color: var(--menu-text) !important;
+}
+checkbox image{
+	filter: invert(100%) hue-rotate(180deg);
+}
+tree treechildren{
+	background: var(--items-bg);
+	color: var(--menu-text); 
+}
+tree treechildren::-moz-tree-row(hover){
+	background: var(--hover-blue) !important;
+	border: var(--hover-border-blue) 1px solid !important;
+}
+tree treechildren::-moz-tree-cell(selected){
+	background: var(--selected-blue) !important;
+}
+tree treechildren::-moz-tree-cell-text(selected){
+	color: var(--menu-text) !important;
+}
+tree treecol {
+	filter: var(--menu-filter);
+}
+tree treecol > image {
+	filter: var(--menu-unfilter-image);
+}
+tree treecolpicker{
+	filter: var(--menu-filter);
+}
+/* Need to override for preferences */
+tabpanels groupbox caption {
+	-moz-appearance: none !important;
+	background: var(--bg-overlay-dark) !important;
+	color: var(--menu-text) !important;
+}
 
 /* 
   Navigation bar (File, Edit menu...) 
@@ -73,32 +151,13 @@ dropmarker{
 /* todo: */
 /* Fix this -- selector doesn't work... */
 tooltip{
-	filter: invert(100%);
+	filter: invert(100%) !important;
 }
 
 
 /*
   Zotero Collections Pane (My Library, ...)
 */
-/* #zotero-collections-pane{
-	filter: var(--menu-filter);
-}
-#zotero-collections-pane image {
-	filter: var(--menu-unfilter-image);
-} */
-#zotero-collections-pane treechildren{
-	background: var(--collections-bg);
-  color: var(--menu-text);
-}
-#zotero-collections-pane treechildren::-moz-tree-row(hover){
-	background: var(--hover-blue) !important;
-}
-#zotero-collections-pane treechildren::-moz-tree-cell(selected){
-	background: var(--selected-blue) !important;
-}
-#zotero-collections-pane treechildren::-moz-tree-cell-text(selected){
-	color: white !important;
-}
 .tag-selector-list-container {
 	background: var(--collections-bg) !important;
 	color: var(--menu-text); 
@@ -129,42 +188,21 @@ tooltip{
 .tag-selector-item.selected{
 	background: var(--selected-blue) !important;
 }
+.tag-selector-item.disabled{
+	opacity: 0.4 !important;
+}
+.tag-selector-list-container > div > div{
+	padding-bottom: 10px;
+	padding-right: 10px;
+}
 
 /*
   Zotero Items Pane (main section in the middle)
 */
-#zotero-items-pane treechildren{
-	background: var(--items-bg);
-  color: var(--menu-text); 
-}
-#zotero-items-pane treechildren::-moz-tree-row(hover){
-	background: var(--hover-blue) !important;
-	border: var(--hover-border-blue) 1px solid !important;
-}
-#zotero-items-pane treechildren::-moz-tree-cell(selected){
-	background: var(--selected-blue) !important;
-}
-#zotero-items-pane treechildren::-moz-tree-cell-text(selected){
-	color: white !important;
-}
-#zotero-items-columns-header > treecol {
-	filter: var(--menu-filter);
-}
-#zotero-items-columns-header > treecol > image {
-	filter: var(--menu-unfilter-image);
-}
-#zotero-items-columns-header > treecolpicker{
-	filter: var(--menu-filter);
-}
 /* #zotero-items-columns-header splitter{
 	display: none;
 } */
-scrollbar {
-	filter: invert(100%);
-}
-scrollbar thumb {
-	filter: brightness(80%); 
-}
+
 
 
 /*
@@ -173,9 +211,6 @@ scrollbar thumb {
 #zotero-item-pane, #zotero-item-pane-content {
 	background: var(--items-bg);
   color: var(--menu-text); 
-}
-#zotero-item-pane button{
-	filter: var(--full-invert-filter);
 }
 #zotero-view-item {
 	background: var(--collections-bg) !important;
@@ -228,4 +263,20 @@ zoteronoteeditor #noteField{
 }
 #zotero-note-window zoteronoteeditor #links-box{
 	color: white !important;
+}
+#tagsPopup button{
+	filter: none;
+}
+
+/*
+  Preferences Menu
+*/
+.prefWindow-dlgbuttons{
+	background: var(--menu-bg) !important;
+}
+radiogroup{
+	filter: var(--menu-filter);
+}
+radiogroup image{
+	filter: var(--menu-unfilter-image);
 }
