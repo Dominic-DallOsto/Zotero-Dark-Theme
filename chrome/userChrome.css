@@ -40,7 +40,7 @@ tab:not([selected=true]) {
 	background: var(--bg-base) !important;
 	color: var(--menu-text) !important;
 }
-button, menulist{
+button, menulist, .zotero-clicky-minus, .zotero-clicky-plus{
 	filter: invert(100%) hue-rotate(180deg);
 }
 textbox, textarea, filefield, input, checkbox image, radiogroup image, select, listbox {
@@ -193,15 +193,12 @@ tooltip{
 */
 #zotero-item-pane, #zotero-item-pane-content {
 	background: var(--items-bg);
-  color: var(--menu-text); 
+  color: var(--menu-text);
 }
 #zotero-view-item {
 	background: var(--collections-bg) !important;
 	color: white !important;
 	border: 0px !important;
-}
-#item-type-menu {
-	color: white !important;
 }
 .creator-type-label > image{
 	filter: invert(100%) brightness(120%);
@@ -210,12 +207,11 @@ tooltip{
 	-moz-appearance: none !important;
 	background: var(--items-bg) !important;
 	color: white !important;
-	border: 4px white !important;
 }
 #zotero-editpane-tabs tab[selected="true"]{
 	color: white !important;
-	border-bottom: 1px white !important;
 	background: var(--collections-bg) !important;
+	border-top: 3px solid var(--selected-blue) !important;
 }
 #zotero-editpane-tabs tab:hover{
 	background: #555 !important;
@@ -227,12 +223,24 @@ tooltip{
 .tags-box-list .tag .editable ul[role=listbox] li[role=option]{
 	filter: var(--full-invert-filter);
 }
-/* fix border */
+.zotero-clicky {	
+	border-radius: 6px;
+	border: 1px solid transparent;
+}
+.zotero-clicky:not(.zotero-field-toggle):not(.zotero-clicky-plus):not(.zotero-clicky-minus):not([disabled=true]):not(.disabled):hover {
+	background: var(--hover-blue) !important;
+	border: 1px solid rgb(109, 149, 224);
+}
+.zotero-clicky:not([disabled=true]):not(.disabled):active, .zotero-clicky[selected="true"], .zotero-clicky.selected {
+	color: white;
+	background: var(--hover-selected) !important;
+}
 #zotero-view-item textbox{
+	filter: none;
 	-moz-appearance: none !important;
-	background: var(--collections-bg) !important;
-	color: white !important;
-	border: 4px !important;
+	background: #101010 !important;
+	color: var(--menu-text) !important;
+/* 	border: 1px solid white !important; */
 }
 
 /* 
