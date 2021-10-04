@@ -21,8 +21,6 @@
 	--hover-blue: #2c618e;
 	--selected-blue: #0078d7;
 	--hover-border-blue: #7bc3ff;
-
-	/* todo: preferences -> advanced -> files and folders, feeds */
 }
 
 /*
@@ -45,7 +43,7 @@ tab:not([selected=true]) {
 button, menulist{
 	filter: invert(100%) hue-rotate(180deg);
 }
-textbox, textarea, filefield, input, checkbox image, radiogroup image {
+textbox, textarea, filefield, input, checkbox image, radiogroup image, select, listbox {
 	filter: invert(88.3%) hue-rotate(180deg);
 }
 scrollbar {
@@ -114,19 +112,18 @@ menupopup menuitem:not([disabled=true]) {
 menupopup menuitem[disabled=true] {
 	color: var(--menu-text-disabled-inverted)
 }
-/* Set the selection colour to gray */
-/* menupopup menuitem[_moz-menuactive], menupopup menu[_moz-menuactive] {
-	filter: saturate(0);
-} */
+toolbox {
+	-moz-appearance: none !important;
+	background: var(--menu-bg) !important;
+	color: var(--menu-text) !important;
+}
 
 
 /*
   Zotero toolbar (New collection, new library, new item buttons)
 */
 #zotero-toolbar{
-	background: var(--menu-bg);
-	color: var(--menu-text);
-	border: 0px !important; /* overwritten if not important */
+	border: 0px !important;
 }
 dropmarker{
 	filter: invert(100%) brightness(120%);
@@ -138,7 +135,6 @@ dropmarker{
 #zotero-lookup-panel{
 	filter: invert(85%) hue-rotate(180deg) brightness(120%);
 }
-/* todo: */
 /* Fix this -- selector doesn't work... */
 tooltip{
 	filter: invert(100%) !important;
@@ -166,12 +162,6 @@ tooltip{
 .tag-selector-filter-container > .tag-selector-actions > .icon-downchevron {
 	filter: invert(100%) brightness(120%);
 }
-.tag-selector-filter-container > .search {
-	filter: var(--menu-filter);
-}
-/* todo: */
-/* hover for collection tree items */
-/* hover for each tag... */
 .tag-selector-item:hover{
 	background: var(--hover-blue) !important;
 }
@@ -184,6 +174,9 @@ tooltip{
 .tag-selector-list-container > div > div{
 	padding-bottom: 10px;
 	padding-right: 10px;
+}
+#color-picker, #color-picker panel {
+	background: var(--menu-bg) !important;
 }
 
 /*
@@ -269,4 +262,11 @@ zoteronoteeditor #noteField{
 }
 .paneSelector image{
 	filter: var(--menu-unfilter-image);
+}
+
+/*
+  Create Report from Item
+*/
+#my-browser {
+	filter: invert(88.3%) hue-rotate(180deg);
 }
