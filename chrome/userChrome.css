@@ -235,14 +235,18 @@ tooltip{
 	color: white;
 	background: var(--hover-selected) !important;
 }
+/* Need this ugly hack to select the scrollbar within the text area, eg. a long abstract */
 #zotero-view-item textbox{
 	filter: none;
 	-moz-appearance: none !important;
-	background: #101010 !important;
+	background: #151515 !important;
 	color: var(--menu-text) !important;
-/* 	border: 1px solid white !important; */
 }
-
+#zotero-view-item textbox input, #zotero-view-item textbox textarea{
+	filter: invert(1) hue-rotate(180deg) !important;
+	background: #E5E5E5 !important;
+	color: black !important;\
+}
 /* 
   Zotero Note Editor
 */
