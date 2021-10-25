@@ -46,6 +46,12 @@ button, menulist, .zotero-clicky-minus, .zotero-clicky-plus{
 textbox, textarea, filefield, input, checkbox image, radiogroup image, select, listbox {
 	filter: invert(88.3%) hue-rotate(180deg);
 }
+dropmarker{
+	filter: invert(100%) brightness(120%);
+}
+menulist dropmarker{
+	filter: none;
+}
 scrollbar {
 	filter: invert(100%);
 }
@@ -56,9 +62,6 @@ caption{
 	background: var(--menu-bg) !important;
 	color: var(--menu-text) !important;
 }
-/* checkbox image{
-	filter: invert(100%) hue-rotate(180deg);
-} */
 tree treechildren{
 	background: var(--items-bg);
 	color: var(--menu-text); 
@@ -117,16 +120,20 @@ toolbox {
 	background: var(--menu-bg) !important;
 	color: var(--menu-text) !important;
 }
-
+#zotero-lookup-panel #zotero-lookup-textbox, #zotero-lookup-panel #zotero-lookup-multiline-textbox,
+#zotero-lookup-panel .textbox-input, #zotero-lookup-panel .textbox-textarea,
+#zotero-lookup-buttons button{
+	filter: none;
+}
+#zotero-tb-search input{
+	filter: none;
+}
 
 /*
   Zotero toolbar (New collection, new library, new item buttons)
 */
 #zotero-toolbar{
 	border: 0px !important;
-}
-dropmarker{
-	filter: invert(100%) brightness(120%);
 }
 /* Invert the "All Field & Tags" search bar */
 #zotero-tb-search{
@@ -245,7 +252,7 @@ tooltip{
 #zotero-view-item textbox input, #zotero-view-item textbox textarea{
 	filter: invert(1) hue-rotate(180deg) !important;
 	background: #E5E5E5 !important;
-	color: black !important;\
+	color: black !important;
 }
 /* 
   Zotero Note Editor
@@ -261,6 +268,16 @@ zoteronoteeditor #noteField{
 }
 #tagsPopup button{
 	filter: none;
+}
+
+/*
+  Cita - Citations menu
+*/
+#citations-pane .citations-box-list-container button, #citations-pane .citations-box-footer button, #citation-editor .pid-list button{
+  filter: none;
+}
+#citations-pane button[title="Remove"]{
+	filter: invert(100%) hue-rotate(180deg);
 }
 
 /*
