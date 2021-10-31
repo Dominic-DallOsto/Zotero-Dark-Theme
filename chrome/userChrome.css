@@ -44,6 +44,9 @@ button, menulist, .zotero-clicky-minus, .zotero-clicky-plus{
 	filter: invert(100%) hue-rotate(180deg);
 }
 textbox, textarea, filefield, input, checkbox image, radiogroup image, select, listbox {
+/* interesting to investigate whether this will work...	 */
+	/* 	-moz-appearance: none !important; */
+	/*! color: var(--menu-text) !important; */
 	filter: invert(88.3%) hue-rotate(180deg);
 }
 dropmarker{
@@ -128,6 +131,9 @@ toolbox {
 #zotero-tb-search input{
 	filter: none;
 }
+/* #zotero-lookup-panel .textbox-input{
+	filter: invert(100%);
+} */
 
 /*
   Zotero toolbar (New collection, new library, new item buttons)
@@ -292,6 +298,9 @@ zoteronoteeditor #noteField{
 .paneSelector image{
 	filter: var(--menu-unfilter-image);
 }
+prefpane textbox{
+	color: white !important;
+}
 
 /*
   Create Report from Item
@@ -305,4 +314,11 @@ zoteronoteeditor #noteField{
 */
 #aboutcontent {
 	background: var(--menu-bg) !important;
+}
+
+/*
+  New (sub)Collection
+*/
+#loginTextbox{
+	color: var(--menu-text) !important;
 }
