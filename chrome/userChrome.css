@@ -299,3 +299,10 @@ zoteronoteeditor #noteField{
 #my-browser {
 	filter: invert(88.3%) hue-rotate(180deg);
 }
+
+/*
+  Help -> About
+*/
+#aboutcontent {
+	background: var(--menu-bg) !important;
+}
