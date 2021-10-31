@@ -44,7 +44,7 @@ tab:not([selected=true]) {
 	background: var(--bg-base) !important;
 	color: var(--menu-text) !important;
 }
-button, menulist, .zotero-clicky-minus, .zotero-clicky-plus{
+button, menulist, .zotero-clicky-minus, .zotero-clicky-plus, progressmeter{
 	filter: invert(100%) hue-rotate(180deg);
 }
 textbox, textarea, filefield, input, checkbox image, radiogroup image, select, listbox {
@@ -321,7 +321,7 @@ prefpane textbox{
 }
 
 /*
-  Help -> Report Errors
+  Help -> Report Error
 */
 #zotero-error-report textarea {
 	color: var(--menu-text) !important;
