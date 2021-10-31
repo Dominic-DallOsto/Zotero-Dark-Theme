@@ -30,6 +30,10 @@ window, page, dialog, wizard, prefpane {
 	background: var(--menu-bg) !important;
 	color: var(--menu-text) !important;
 }
+.wizard-header{
+	background: var(--menu-bg) !important;
+	color: var(--menu-text) !important;
+}
 tabpanels, tab[selected=true]{
 	-moz-appearance: none !important;
 	background: var(--bg-overlay-dark) !important;
@@ -317,10 +321,9 @@ prefpane textbox{
 }
 
 /*
-  Help -> Check for updates
+  Tools -> RTF Scan
 */
-wizardpage updateheader .update-header{
-	background: var(--menu-bg) !important;
+#zotero-rtfScan textbox{
 	color: var(--menu-text) !important;
 }
 
