@@ -317,6 +317,14 @@ prefpane textbox{
 }
 
 /*
+  Help -> Check for updates
+*/
+wizardpage updateheader .update-header{
+	background: var(--menu-bg) !important;
+	color: var(--menu-text) !important;
+}
+
+/*
   New (sub)Collection
 */
 #loginTextbox{
