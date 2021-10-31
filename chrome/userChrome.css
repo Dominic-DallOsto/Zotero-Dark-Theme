@@ -321,6 +321,13 @@ prefpane textbox{
 }
 
 /*
+  Help -> Report Errors
+*/
+#zotero-error-report textarea {
+	color: var(--menu-text) !important;
+}
+
+/*
   Tools -> RTF Scan
 */
 #zotero-rtfScan textbox{
