@@ -340,3 +340,41 @@ prefpane textbox{
 #loginTextbox{
 	color: var(--menu-text) !important;
 }
+
+/*
+  Addons menu
+*/
+#addons-page .main-content richlistitem{
+	background-image: radial-gradient(at 50% 0%, #333 0%, transparent 75%) !important;
+	color: white !important;
+}
+#addons-page #category-box, #addons-page .main-content{
+	filter: var(--full-invert-filter);
+	background: black;
+}
+#addons-page #header-utils-btn{
+	filter: var(--full-invert-filter);
+}
+#addons-page #detail-view{
+	background-image: radial-gradient(at 50% 0%, #333 0%, transparent 75%) !important;
+}
+#addons-page .detail-view-container{
+	color: white !important;
+}
+#addons-page .detail-view-container #detail-rows row{
+	text-shadow: none !important;
+}
+#addons-page .main-content richlistitem[selected]{
+	background-color: black !important;
+	background-image: radial-gradient(at 50% 0%, #999 0%, transparent 75%) !important;
+}
+#addons-page #category-box richlistitem:not([selected]){
+	color: #666 !important;
+}
+#addons-page #category-box richlistitem:hover{
+	background: #222 !important;
+}
+#addons-page .main-content #updates-view .alert{
+	background: black !important;
+	color: white !important;
+}
