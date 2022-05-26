@@ -7,25 +7,22 @@
 	--menu-filter: invert(90%) hue-rotate(180deg) brightness(120%) saturate(120%);
 	--menu-unfilter-image: invert(90%) hue-rotate(180deg) saturate(120%);
 	--full-invert-filter: invert(100%) hue-rotate(180deg);
+	
 	--bg-textbox: #010101;
 	
+	--tree-bg: #1E1E1E;
+	--tree-header: #2D2D2D;
+	
 	--twisty-fill: #AAAAAA;
-	
-	--collections-bg: #1F2023;
-	
-	--items-bg: #27292D;
-	
-	--bg-overflow: #010101;
-	--bg-base: #1F2023;
-	--bg-surface: #27292D;
-	--bg-overlay-dark: #2D2F34;
-	--bg-overlay-light: #383B40;
 	
 	--hover-blue: #2c618e;
 	--selected-blue: #0078d7;
 	--hover-border-blue: #7bc3ff;
 	--hover-grey: #555555;
 	--selected-grey: #1F2023;
+	
+	--scrollbar-filter: invert(100%);
+	--scrollbar-unfilter: invert(100%);
 }
 
 /*
@@ -66,7 +63,7 @@ menulist dropmarker{
 }
 
 .virtualized-table{
-	background: var(--items-bg);
+	background: var(--tree-bg);
 	color: var(--menu-text); 
 }
 .virtualized-table .row:hover{
@@ -77,18 +74,22 @@ menulist dropmarker{
 	background: var(--selected-blue) !important;
 }
 .virtualized-table-header{
-	background: var(--menu-bg) !important;
-	color: var(--menu-text); 
+	background: var(--tree-header) !important;
+	color: var(--menu-text);
+	border-bottom: 1px solid #cccccc;
 }
 .virtualized-table-header .cell:hover{
 	background: var(--hover-grey) !important;
 }
 /* Can't easily select the scrollbar for a table, only as a child of .virtualized-table-body */
 .virtualized-table-body {
-	filter: invert(1) !important;
+	filter: var(--scrollbar-filter) !important;
 }
 .virtualized-table-body > div{
-	filter: invert(1) !important;
+	filter: var(--scrollbar-unfilter) !important;
+}
+.virtualized-table-header .icon-downchevron{
+	filter: var(--full-invert-filter)
 }
 tab, .tab{
 	-moz-appearance: none !important;
@@ -185,19 +186,19 @@ tooltip {
   Zotero Collections Pane (My Library, ...)
 */
 .tag-selector-list-container {
-	background: var(--collections-bg) !important;
+	background: var(--tree-bg) !important;
 	color: var(--menu-text); 
 }
 .tag-selector-item {
-	background: var(--collections-bg) !important;
+	background: var(--tree-bg) !important;
 	color: var(--menu-text);
 }
 /* Can't easily select the scrollbar, only as a child of .tag-selector-list */
 .tag-selector-list{
-	filter: invert(100%);
+	filter: var(--scrollbar-filter) !important;
 }
 .tag-selector-list > div{
-	filter: invert(100%);
+	filter: var(--scrollbar-unfilter) !important;
 }
 .tag-selector-list-container > div > div{
 	padding-bottom: 10px;
@@ -205,6 +206,9 @@ tooltip {
 }
 #color-picker, #color-picker panel {
 	background: var(--menu-bg) !important;
+}
+#zotero-collections-splitter{
+	display: none;
 }
 
 /*
@@ -229,11 +233,6 @@ tooltip {
 	background: var(--items-bg);
   color: var(--menu-text);
 }
-/* #zotero-view-item {
-	background: var(--collections-bg) !important;
-	color: white !important;
-	border: 0px !important;
-} */
 .creator-type-label > image{
 	filter: invert(100%);
 }
@@ -257,6 +256,11 @@ tooltip {
 	background: #E5E5E5 !important;
 	color: black !important;
 }
+#zotero-items-splitter{
+	display: none;
+}
+
+
 /* 
   Zotero Note Editor
 */
@@ -394,16 +398,19 @@ prefpane textbox{
 .zotero-context-notes-list, .note-row{
 	background: var(--menu-bg) !important;
 }
-.notes-list-container{
-	filter: invert(1);
+.notes-list-container, #item-box{
+	filter: var(--scrollbar-filter) !important;
 	background: var(--menu-bg-inverted) !important;
 }
-.notes-list-container > div{
-	filter: invert(1);
+.notes-list-container > div, #item-box > box{
+	filter: var(--scrollbar-unfilter) !important;
 }
 #zotero-context-splitter{
 	background: var(--menu-bg) !important;
 }
 #zotero-context-splitter grippy {
+	filter: invert(1);
+}
+#item-box{
 	filter: invert(1);
 }
