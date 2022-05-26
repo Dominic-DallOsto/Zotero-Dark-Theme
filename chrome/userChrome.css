@@ -1,12 +1,15 @@
 :root {
 	--menu-bg: #2A2A2A;
+	--menu-bg--inverted: #D5D5D5;
 	--menu-text: #FFFFFF;
 	--menu-text-inverted: #000000;
 	--menu-text-disabled-inverted: #BBBBBB;
-	--menu-filter: invert(90%) hue-rotate(180deg) brightness(120%);
+	--menu-filter: invert(90%) hue-rotate(180deg) brightness(120%) saturate(120%);
 	--menu-unfilter-image: invert(90%) hue-rotate(180deg) saturate(120%);
 	--full-invert-filter: invert(100%) hue-rotate(180deg);
 	--bg-textbox: #010101;
+	
+	--twisty-fill: #AAAAAA;
 	
 	--collections-bg: #1F2023;
 	
@@ -21,6 +24,8 @@
 	--hover-blue: #2c618e;
 	--selected-blue: #0078d7;
 	--hover-border-blue: #7bc3ff;
+	--hover-grey: #555555;
+	--selected-grey: #1F2023;
 }
 
 /*
@@ -34,14 +39,14 @@ window, page, dialog, wizard, prefpane {
 	background: var(--menu-bg) !important;
 	color: var(--menu-text) !important;
 }
-tabpanels, tab[selected=true]{
+tabpanels{
 	-moz-appearance: none !important;
-	background: var(--bg-overlay-dark) !important;
-	color: var(--menu-text) !important;
+ 	background: var(--menu-bg) !important;
+ 	color: var(--menu-text) !important;
 }
-tab:not([selected=true]) {
+caption{
 	-moz-appearance: none !important;
-	background: var(--bg-base) !important;
+	background: var(--menu-bg) !important;
 	color: var(--menu-text) !important;
 }
 button, menulist, .zotero-clicky-minus, .zotero-clicky-plus, progressmeter{
@@ -59,44 +64,60 @@ dropmarker{
 menulist dropmarker{
 	filter: none;
 }
-scrollbar {
-	filter: invert(100%);
-}
-scrollbar thumb {
-	filter: brightness(80%); 
-}
-caption{
-	background: var(--menu-bg) !important;
-	color: var(--menu-text) !important;
-}
-tree treechildren{
+
+.virtualized-table{
 	background: var(--items-bg);
 	color: var(--menu-text); 
 }
-tree treechildren::-moz-tree-row(hover){
+.virtualized-table .row:hover{
 	background: var(--hover-blue) !important;
 	border: var(--hover-border-blue) 1px solid !important;
 }
-tree treechildren::-moz-tree-cell(selected){
+.virtualized-table .row.selected{
 	background: var(--selected-blue) !important;
 }
-tree treechildren::-moz-tree-cell-text(selected){
-	color: var(--menu-text) !important;
+.virtualized-table-header{
+	background: var(--menu-bg) !important;
+	color: var(--menu-text); 
 }
-tree treecol {
-	filter: var(--menu-filter);
+.virtualized-table-header .cell:hover{
+	background: var(--hover-grey) !important;
 }
-tree treecol > image {
-	filter: var(--menu-unfilter-image);
+/* Can't easily select the scrollbar for a table, only as a child of .virtualized-table-body */
+.virtualized-table-body {
+	filter: invert(1) !important;
 }
-tree treecolpicker{
-	filter: var(--menu-filter);
+.virtualized-table-body > div{
+	filter: invert(1) !important;
 }
-/* Need to override for preferences */
-tabpanels groupbox caption {
+tab, .tab{
 	-moz-appearance: none !important;
-	background: var(--bg-overlay-dark) !important;
+	background: var(--bg-base) !important;
 	color: var(--menu-text) !important;
+}
+tab:hover:not([disabled=true]), .tab:hover:not(disabled){
+	background: var(--hover-grey) !important;
+}
+tab[selected="true"], .tab.selected{
+	background: var(--selected-grey) !important;
+	border-top: 3px solid var(--selected-blue) !important;
+}
+.tab .icon{
+	filter: invert(0.9);
+}
+.twisty svg{
+	fill: var(--twisty-fill) !important;
+}
+.zotero-clicky:not(.zotero-field-toggle):not(.zotero-clicky-plus):not(.zotero-clicky-minus):not([disabled=true]):not(.disabled):hover {
+	background: var(--hover-blue) !important;
+	border: 1px solid rgb(109, 149, 224);
+}
+.zotero-clicky:not([disabled=true]):not(.disabled):active, .zotero-clicky[selected="true"], .zotero-clicky.selected {
+	color: white;
+	background: var(--selected-blue) !important;
+}
+.zotero-clicky.disabled, .zotero-clicky[disabled=true]{
+	opacity: 0.4 !important;
 }
 
 /* 
@@ -144,6 +165,8 @@ toolbox {
 */
 #zotero-toolbar{
 	border: 0px !important;
+	background: var(--menu-bg) !important;
+	color: var(--menu-text) !important;
 }
 /* Invert the "All Field & Tags" search bar */
 #zotero-tb-search{
@@ -152,8 +175,8 @@ toolbox {
 #zotero-lookup-panel{
 	filter: invert(85%) hue-rotate(180deg) brightness(120%);
 }
-/* Fix this -- selector doesn't work... */
-tooltip{
+/* Fix this -- only styles tab tooltips, not menu ones */
+tooltip {
 	filter: invert(100%) !important;
 }
 
@@ -165,28 +188,16 @@ tooltip{
 	background: var(--collections-bg) !important;
 	color: var(--menu-text); 
 }
+.tag-selector-item {
+	background: var(--collections-bg) !important;
+	color: var(--menu-text);
+}
 /* Can't easily select the scrollbar, only as a child of .tag-selector-list */
 .tag-selector-list{
 	filter: invert(100%);
 }
 .tag-selector-list > div{
 	filter: invert(100%);
-}
-.tag-selector-filter-container{
-	background: var(--collections-bg);
-	color: var(--menu-text); 
-}
-.tag-selector-filter-container > .tag-selector-actions > .icon-downchevron {
-	filter: invert(100%) brightness(120%);
-}
-.tag-selector-item:hover{
-	background: var(--hover-blue) !important;
-}
-.tag-selector-item.selected{
-	background: var(--selected-blue) !important;
-}
-.tag-selector-item.disabled{
-	opacity: 0.4 !important;
 }
 .tag-selector-list-container > div > div{
 	padding-bottom: 10px;
@@ -199,58 +210,40 @@ tooltip{
 /*
   Zotero Items Pane (main section in the middle)
 */
-/* #zotero-items-columns-header splitter{
-	display: none;
-} */
+.zotero-item-pane-content{
+	background: var(--menu-bg) !important;
+}
+/* Need this for when the screen is blank when clicking a new collection */
+#zotero-items-tree {
+	background: var(--menu-bg) !important;
+	color: var(--menu-text) !important;
+}
 
 
 
 /*
   Zotero Item Pane (details about the selected item)
 */
+/* When no item is selected */
 #zotero-item-pane, #zotero-item-pane-content {
 	background: var(--items-bg);
   color: var(--menu-text);
 }
-#zotero-view-item {
+/* #zotero-view-item {
 	background: var(--collections-bg) !important;
 	color: white !important;
 	border: 0px !important;
-}
+} */
 .creator-type-label > image{
-	filter: invert(100%) brightness(120%);
+	filter: invert(100%);
 }
-#zotero-editpane-tabs tab{
-	-moz-appearance: none !important;
-	background: var(--items-bg) !important;
-	color: white !important;
-}
-#zotero-editpane-tabs tab[selected="true"]{
-	color: white !important;
-	background: var(--collections-bg) !important;
-	border-top: 3px solid var(--selected-blue) !important;
-}
-#zotero-editpane-tabs tab:hover{
-	background: #555 !important;
-}
+
 .tags-box-list .tag .editable .input{
 	filter: var(--full-invert-filter);
 }
 /* Invert the suggestions text back to white */
 .tags-box-list .tag .editable ul[role=listbox] li[role=option]{
 	filter: var(--full-invert-filter);
-}
-.zotero-clicky {	
-	border-radius: 6px;
-	border: 1px solid transparent;
-}
-.zotero-clicky:not(.zotero-field-toggle):not(.zotero-clicky-plus):not(.zotero-clicky-minus):not([disabled=true]):not(.disabled):hover {
-	background: var(--hover-blue) !important;
-	border: 1px solid rgb(109, 149, 224);
-}
-.zotero-clicky:not([disabled=true]):not(.disabled):active, .zotero-clicky[selected="true"], .zotero-clicky.selected {
-	color: white;
-	background: var(--hover-selected) !important;
 }
 /* Need this ugly hack to select the scrollbar within the text area, eg. a long abstract */
 #zotero-view-item textbox{
@@ -267,17 +260,12 @@ tooltip{
 /* 
   Zotero Note Editor
 */
-zoteronoteeditor #noteField{
+/* Can only access with a filter - inside an iframe */
+zoteronoteeditor {
 	filter: var(--menu-filter);
 }
-#zotero-note-window {
-	background: var(--menu-bg) !important;
-}
-#zotero-note-window zoteronoteeditor #links-box{
-	color: white !important;
-}
-#tagsPopup button{
-	filter: none;
+zoteronoteeditor hbox{
+	filter: var(--menu-filter);
 }
 
 /*
@@ -288,6 +276,7 @@ zoteronoteeditor #noteField{
 }
 #citations-pane button[title="Remove"]{
 	filter: invert(100%) hue-rotate(180deg);
+	border: 0px !important;
 }
 
 /*
@@ -297,13 +286,25 @@ zoteronoteeditor #noteField{
 	background: var(--menu-bg) !important;
 }
 .paneSelector{
-	filter: var(--menu-filter);
+	background: var(--menu-bg) !important;
+	color: var(--menu-text) !important;
 }
 .paneSelector image{
-	filter: var(--menu-unfilter-image);
+	filter: none;
 }
 prefpane textbox{
 	color: white !important;
+}
+.paneSelector radio{
+	-moz-appearance: none !important;
+/* 	background: var(--bg-base) !important; */
+	color: var(--menu-text) !important;
+}
+.paneSelector radio:hover:not([disabled=true]){
+	background: var(--hover-grey) !important;
+}
+.paneSelector radio[selected="true"]{
+	background: var(--selected-grey) !important;
 }
 
 /*
@@ -344,7 +345,7 @@ prefpane textbox{
 /*
   Addons menu
 */
-#addons-page .main-content richlistitem{
+/* #addons-page .main-content richlistitem{
 	background-image: radial-gradient(at 50% 0%, #333 0%, transparent 75%) !important;
 	color: white !important;
 }
@@ -377,4 +378,32 @@ prefpane textbox{
 #addons-page .main-content #updates-view .alert{
 	background: black !important;
 	color: white !important;
+} */
+
+
+/*
+  PDF viewer
+*/
+.reader{
+	filter: var(--menu-filter) !important;
+}
+#zotero-context-toolbar-extension, #zotero-tab-toolbar{
+	background: var(--menu-bg) !important;
+	border-bottom: 1px solid #6F6F6F;
+}
+.zotero-context-notes-list, .note-row{
+	background: var(--menu-bg) !important;
+}
+.notes-list-container{
+	filter: invert(1);
+	background: var(--menu-bg-inverted) !important;
+}
+.notes-list-container > div{
+	filter: invert(1);
+}
+#zotero-context-splitter{
+	background: var(--menu-bg) !important;
+}
+#zotero-context-splitter grippy {
+	filter: invert(1);
 }
